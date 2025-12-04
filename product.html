@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>бүтээгдэхүүн</title>
+
+    
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="Css/style4.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="imgBx">
+            <img src="Zurag/product-1.png" alt="Image">
+        </div>
+        <div class="details">
+            <div class="content">
+                <h2>Гацуур , Тоглоом <br>
+                    <span></span>
+                </h2>
+                <p>
+                    Christmas is a Christian festival that celebrates the birth of Jesus Christ, who Christians believe was the son of God. For most people, it takes place every year on 25 December – the day that the Roman Catholic Church chose to mark Jesus' birthday.
+                </p>
+                <p class="product-colors">Бэлэн байгаа өнгөнүүд:
+                    <span class="black active" data-color-primary="#000" data-color-sec="#212121" ></span>
+                    <span class="red" data-color-primary="#7E021C" data-color-sec="#bd072d" ></span>
+                    <span class="orange" data-color-primary="#CE5B39" data-color-sec="#F18557"></span>
+                </p>
+                <h3>5900</h3>
+                <a href="payment.html"><button>Худалдаж авах</button></a>
+            </div>
+        </div>
+    </div>
+
+    
+    <footer>
+        <a href="#" target="_blank">batsukhgerelsaikhan0@gmail.com</a>
+    </footer>
+
+
+    <script>
+       
+        $(".product-colors span").click(function() {
+            $(".product-colors span").removeClass("active");
+            $(this).addClass("active");
+            $(".active").css("border-color", $(this).attr("data-color-sec"))
+            $("body").css("background", $(this).attr("data-color-primary"));
+            $(".content h2").css("color", $(this).attr("data-color-sec"));
+            $(".content h3").css("color", $(this).attr("data-color-sec"));
+            $(".container .imgBx").css("background", $(this).attr("data-color-sec"));
+            $(".container .details button").css("background", $(this).attr("data-color-sec"));
+            $(".imgBx img").attr('src', $(this).attr("data-pic"));
+        });
+    </script>
+
+</body>
+
+</html>

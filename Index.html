@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Christmas isn't just a day, it's a frame of mind.</title>
+   <link rel="icon" href="Zurag/logo1.png">
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+   <link rel="stylesheet" href="Css/style2.css">
+
+   <style>
+      /* Cart Count Bubble */
+      .cart-count {
+         position: absolute;
+         top: 5px; 
+         right: -5px; 
+         background: red;
+         color: white;
+         border-radius: 50%;
+         padding: 0 5px;
+         font-size: 1.2rem;
+         line-height: 1.5;
+         text-align: center;
+         min-width: 20px;
+         height: 20px;
+         display: none; /* Hidden by default when cart is empty */
+      }
+
+      .icons .fas.fa-shopping-cart {
+         position: relative;
+      }
+      
+      /* Cart Overlay Container */
+      .cart-overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, 0.7);
+         display: none; /* Hidden by default */
+         justify-content: center;
+         align-items: center;
+         z-index: 1000; 
+      }
+
+      /* Shopping Cart Modal */
+      .shopping-cart {
+         background: #fff;
+         padding: 20px;
+         border-radius: 10px;
+         width: 90%;
+         max-width: 500px;
+         max-height: 80vh;
+         overflow-y: auto;
+         position: relative;
+      }
+      
+      .shopping-cart h2 {
+         text-align: center;
+         margin-bottom: 20px;
+         color: #c0392b; /* Christmas Red */
+      }
+      
+      /* Individual Cart Item */
+      .cart-item {
+         display: flex;
+         align-items: center;
+         margin-bottom: 15px;
+         border-bottom: 1px solid #eee;
+         padding-bottom: 10px;
+      }
+      
+      .cart-item img {
+         width: 60px;
+         height: 60px;
+         object-fit: cover;
+         margin-right: 15px;
+         border-radius: 5px;
+      }
+      
+      .cart-item-details {
+         flex-grow: 1;
+      }
+      
+      .cart-item-details h4 {
+         margin: 0 0 5px 0;
+         font-size: 1.4rem;
+      }
+
+      .cart-item-details .price {
+         font-size: 1.2rem;
+         color: #27ae60; 
+      }
+      
+      /* Cart Total */
+      .cart-total {
+         margin-top: 20px;
+         text-align: right;
+         font-size: 1.8rem;
+         font-weight: bold;
+         border-top: 2px solid #ccc;
+         padding-top: 10px;
+      }
+      
+      /* Close Button */
+      .close-cart-btn {
+         position: absolute;
+         top: 10px;
+         right: 10px;
+         font-size: 2rem;
+         cursor: pointer;
+         color: #c0392b;
+      }
+      
+      /* Checkout Button */
+      .btn-checkout {
+         display: block;
+         text-align: center;
+         margin-top: 15px;
+         padding: 10px;
+         background: #27ae60;
+         color: white;
+         text-decoration: none;
+         border-radius: 5px;
+      }
+      
+      /* Empty Message */
+      .empty-cart-message {
+         text-align: center;
+         font-size: 1.6rem;
+         color: #999;
+         padding: 30px;
+      }
+
+   </style>
+</head>
+<body>
+
+<header class="header">
+ <img src="Zurag/logo.png" style="width:7%" alt="">
+
+   <nav class="navbar">
+      <a href="#home">home</a>
+      <a href="#about">about</a>
+      <a href="#products">products</a>
+      <a href="#services">facts</a>
+      <a href="#gallery">gallery</a>
+      <a href="#contact">contact</a>
+      <a href="#blogs">blogs</a>
+   </nav>
+
+   <div class="icons">
+      <div id="menu-btn" class="fas fa-bars"></div>
+      <div id="search-btn" class="fas fa-search"></div>
+      <a href="#" class="fas fa-heart"></a>
+      <a href="#" class="fas fa-shopping-cart" id="cart-icon">
+         <span class="cart-count" id="cart-item-count">0</span>
+      </a>
+   </div>
+
+   <form action="" class="search-form">
+      <input type="search" name="" placeholder="search here..." id="search-box">
+      <label for="search-box" class="fas fa-search"></label>
+   </form>
+</header>
+
+<section class="home" id="home">
+   <div class="content">
+      <p>we wish you a</p>
+      <h3>merry christmas</h3>
+   </div>
+   <img src="Zurag/trees.png" class="tree" alt="">
+   <img src="Zurag/mountains.png" class="mountain" alt="">
+   <img src="Zurag/moon.png" class="moon" alt="">
+   <img src="Zurag/cloud.png" class="cloud-1" alt="">
+   <img src="Zurag/cloud.png" class="cloud-2" alt="">
+</section>
+
+<section class="about" id="about">
+   <div class="image" data-aos="fade-right" data-aos-delay="150">
+      <img src="Zurag/about.png" alt="">
+   </div>
+   <div class="content" data-aos="fade-left" data-aos-delay="300">
+      <h3>celebrate your christmas with us</h3>
+      <p>Улиран одож буй хуучин он танд
+         <br>
+         Ухаарал баяслыг хайрлаж
+         <br>
+         Угтан авч буй шинэ он танд
+         <br>
+         Урам зориг, амжилт бүтээл, аз жаргалын дээдийг бэлэглэг.
+         <br>
+         Шинэ оны мэндийг хүргэе!</p>
+      <a href="#" class="btn">Үргэлжлүүлэх</a>
+   </div>
+</section>
+
+<section class="products" id="products">
+
+   <h1 class="heading"><span>бүтээгдэхүүнүүд</span> </h1>
+
+   <div class="box-container">
+
+      <div class="box product-box" data-aos="fade-up" data-aos-delay="150"
+         data-name="Гацуур , Тоглоом"
+         data-price="5099"
+         data-image="Zurag/product-1.png">
+         <div class="image">
+            <img src="Zurag/product-1.png" alt="">
+            <div class="icons">
+               <a href="#" class="fas fa-shopping-cart add-to-cart-btn"></a>
+               <a href="#" class="fas fa-heart"></a>
+            </div>
+         </div>
+         <div class="content">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star-half-alt"></i>
+            </div>
+            <h3>Гацуур , Тоглоом</h3>
+            <div class="price">5099₮ <span>7800₮</span></div>
+         </div>
+      </div>
+
+      <div class="box product-box" data-aos="fade-up" data-aos-delay="300"
+         data-name="Цаа буга(Тоглоом)"
+         data-price="10000"
+         data-image="Zurag/product-2.png">
+         <div class="image">
+            <img src="Zurag/product-2.png" alt="">
+            <div class="icons">
+               <a href="#" class="fas fa-shopping-cart add-to-cart-btn"></a>
+               <a href="#" class="fas fa-heart"></a>
+            </div>
+         </div>
+         <div class="content">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+            </div>
+            <h3>Цаа буга(Тоглоом)</h3>
+            <div class="price">10000₮ <span>12000₮</span></div>
+         </div>
+      </div>
+
+      <div class="box product-box" data-aos="fade-up" data-aos-delay="450"
+         data-name="Пигүүр"
+         data-price="21000"
+         data-image="Zurag/product-3.png">
+         <div class="image">
+            <img src="Zurag/product-3.png" alt="">
+            <div class="icons">
+               <a href="#" class="fas fa-shopping-cart add-to-cart-btn"></a>
+               <a href="#" class="fas fa-heart"></a>
+            </div>
+         </div>
+         <div class="content">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+            </div>
+            <h3>Пигүүр</h3>
+            <div class="price">21000₮<span>31000₮</span></div>
+         </div>
+      </div>
+
+      <div class="box product-box" data-aos="fade-up" data-aos-delay="600"
+         data-name="Гацуур , Чимэглэл"
+         data-price="14000"
+         data-image="Zurag/product-4.png">
+         <div class="image">
+            <img src="Zurag/product-4.png" alt="">
+            <div class="icons">
+               <a href="#" class="fas fa-shopping-cart add-to-cart-btn"></a>
+               <a href="#" class="fas fa-heart"></a>
+            </div>
+         </div>
+         <div class="content">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+
+            </div>
+            <h3>Гацуур , Чимэглэл</h3>
+            <div class="price">14000₮ <span>20000₮</span></div>
+         </div>
+      </div>
+
+      <div class="box product-box" data-aos="fade-up" data-aos-delay="750"
+         data-name="Малгай бээлий"
+         data-price="30000"
+         data-image="Zurag/product-5.png">
+         <div class="image">
+            <img src="Zurag/product-5.png" alt="">
+            <div class="icons">
+               <a href="#" class="fas fa-shopping-cart add-to-cart-btn"></a>
+               <a href="#" class="fas fa-heart"></a>
+            </div>
+         </div>
+         <div class="content">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star-half-alt"></i>
+            </div>
+            <h3>Малгай бээлий</h3>
+            <div class="price">30000₮ <span>31000₮</span></div>
+         </div>
+      </div>
+
+      <div class="box product-box" data-aos="fade-up" data-aos-delay="900"
+         data-name="Гацуур , Гэрэл"
+         data-price="25000"
+         data-image="Zurag/product-6.png">
+         <div class="image">
+            <img src="Zurag/product-6.png" alt="">
+            <div class="icons">
+               <a href="#" class="fas fa-shopping-cart add-to-cart-btn"></a>
+               <a href="#" class="fas fa-heart"></a>
+            </div>
+         </div>
+         <div class="content">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+            </div>
+            <h3>Гацуур , Гэрэл</h3>
+            <div class="price">25000₮<span> 30000₮</span></div>
+         </div>
+      </div>
+
+   </div>
+
+</section>
+
+<section class="services" id="services">
+   <h1 class="heading"><span>Зул сарын талаарх</span> </h1>
+   <div class="box-container">
+      <div class="box" class="box" data-aos="fade-up" data-aos-delay="150">
+         <i class="fas fa-tree"></i>
+         <h3>Гацуур</h3>
+         <p>Гацуур нь эрт үеэс элбэг дэлбэг сайхан амьдралын бэлгэдэл болсоор иржээ. Гацуур модыг зул сарын баяраар чимэглэх заншил XYI зуунаас эхэлсэн бөгөөд анх Германы Страсбург хотын иргэд өнгийн цаасаар чимжээ. Дараа нь европод өргөн тархсан байна. Англи, Орос, Америкт 1840 – 1850-иад оны үеэс дэлгэрч бүх нийтээрээ хэрэглэдэг болжээ.</p>
+      </div>
+      <div class="box" class="box" data-aos="fade-up" data-aos-delay="300">
+         <i class="fas fa-cookie"></i>
+         <h3>Жигнэмэг</h3>
+         <p>Германд зул сарын баярын өмнө ихэнх гэр бүл хавтгай жигнэмэг хийж, уутлан найз нөхөд, хөрш зэрэгтээ тараадаг уламжлалтай. Халуун ам бүлээрээ юм уу найз нөхдөөрөө өдөржин ширээ тойрон сууцгааж, баярын уур амьсгалыг мэдрэнгээ есөн жорын жигнэмэг хийдэг юм. Дугуй, дөрвөлжин, од хэлбэртэй байх нь элбэг.</p>
+      </div>
+      <div class="box" class="box" data-aos="fade-up" data-aos-delay="450">
+         <i class="fas fa-snowman"></i>
+         <h3>Цасан хүн</h3>
+         <p>Цасан хүн үргэлж сайн сайхныг илэрхийлдэг, гадаад төрхөөрөө баяр баясгалантай байдаг бөгөөд тэднийг сийлбэрлэх нь үргэлж хөгжилтэй байдаг!</p>
+      </div>
+      <div class="box" class="box" data-aos="fade-up" data-aos-delay="600">
+         <i class="fas fa-gifts"></i>
+         <h3>Шинэ жилийн бэлэг</h3>
+         <p>Шашны зан үйлэнд хүмүүс бэлэг дурсгалын бяцхан зүйлс солилцдог аж. Харин 1800 оны үеэс гацуур мод чимэглэж, баярын зурагтай ил захидал илгээж, бэлэг солилцох болсон байна.</p>
+      </div>
+      <div class="box" class="box" data-aos="fade-up" data-aos-delay="750">
+         <i class="fas fa-candy-cane"></i>
+         <h3>Чихэр</h3>
+         <p>Энэ амтат чихэр нь найз нөхөд, гэр бүлийнхэнд зориулсан сайхан, амттай гар хийцийн Христийн Мэндэлсний Баярын бэлэг болгодог.</p>
+      </div>
+      <div class="box" class="box" data-aos="fade-up" data-aos-delay="900">
+         <i class="fas fa-sleigh"></i>
+         <h3>Санта Клаус</h3>
+         <p>Анхны бодит Санта буюу чинээлэг айлын ганц хүү Николасын эцэг, эх нь тахалд нэрвэгдэж нас барахад бяцхан Николас сүмд өсч торнин 17 насандаа урьд байгаагүй хамгийн залуу санваартан болсон аж. Түүний өгөөмөр сэтгэл, өв хөрөнгөө хэрэгтэй нэгэнд нь тараадаг байсан тухай олон домог яриа байдаг.</p>
+      </div>
+   </div>
+</section>
+
+<section class="gallery" id="gallery">
+   <h1 class="heading"><span>Зурагнууд</span> </h1>
+   <div class="box-container">
+      <img class="box" data-aos="zoom-in" data-aos-delay="150" src="Zurag/g-img-1.jpg" alt="">
+      <img class="box" data-aos="zoom-in" data-aos-delay="300" src="Zurag/g-img-2.jpg" alt="">
+      <img class="box" data-aos="zoom-in" data-aos-delay="450" src="Zurag/g-img-3.jpg" alt="">
+      <img class="box" data-aos="zoom-in" data-aos-delay="600" src="Zurag/g-img-4.jpg" alt="">
+      <img class="box" data-aos="zoom-in" data-aos-delay="750" src="Zurag/g-img-5.jpg" alt="">
+      <img class="box" data-aos="zoom-in" data-aos-delay="900" src="Zurag/g-img-6.jpg" alt="">
+      <img class="box" data-aos="zoom-in" data-aos-delay="1050" src="Zurag/g-img-7.jpg" alt="">
+      <img class="box" data-aos="zoom-in" data-aos-delay="1200" src="Zurag/g-img-8.jpg" alt="">
+      <img class="box" data-aos="zoom-in" data-aos-delay="1350" src="Zurag/g-img-9.jpg" alt="">
+   </div>
+</section>
+
+<section class="contact" id="contact">
+   <form action="">
+      <h3 data-aos="fade-up" data-aos-delay="150">contact us</h3>
+      <input data-aos="fade-up" data-aos-delay="300" type="text" placeholder="First name" class="box">
+      <input data-aos="fade-up" data-aos-delay="300" type="text" placeholder="Last name" class="box">
+      <input data-aos="fade-up" data-aos-delay="450" type="email" placeholder="Email" class="box">
+      <input data-aos="fade-up" data-aos-delay="600" type="number" placeholder="Phone" class="box">
+      <textarea data-aos="fade-up" data-aos-delay="750" name="" placeholder="Message" class="box" id="" cols="30" rows="10"></textarea>
+      <input data-aos="fade-up" data-aos-delay="900" type="submit" value="Илгээх" class="btn">
+   </form>
+</section>
+
+<section class="blogs" id="blogs">
+   <h1 class="heading"> our <span>blogs</span> </h1>
+   <div class="box-container">
+      <div class="box" data-aos="fade-up" data-aos-delay="300">
+         <div class="images">
+            <img src="Zurag/blog-2.jpg" alt="">
+         </div>
+         <div class="content">
+            <h3>Санта Клаусын үүсэл гарал</h3>
+            <br>
+            <br>
+            <p>Шинэ жилийн хамгийн чухал зочин бол “Өвлийн өвгөн “ билээ. Монголчууд өвлийн өвгөн аав гэдэг. Харин нийтлэг нэр нь Санта Клаус.</p>
+            <br>
+            <a href="https://news.zindaa.mn/1f4b" class="btn">Үргэлжлүүлэх</a>
+            <br>
+            <div class="icons">
+               <a href="#"> <i class="fas fa-calendar"></i> 15th Dec, 2022 </a>
+            </div>
+         </div>
+      </div>
+      <div class="box" data-aos="fade-up" data-aos-delay="150">
+         <div class="images">
+            <img src="Zurag/blog-1.jpg" alt="">   
+         </div>
+         <div class="content">
+            <h3>ШИНЭ ЖИЛ ГЭЖ ЮУ ВЭ?</h3>
+            <br>
+            <br>
+            <br>
+            <p>Шинэ жилийн талаарх подкаст</p>
+            <br>
+            <br>
+            <br>
+            <audio controls preload="metadata">
+               <source src="1.mp3" type="audio/mp3"></audio>
+               <br>
+               <br>
+               <br>
+            <div class="icons">
+               <a href="#"> <i class="fas fa-calendar"></i> 15th Dec, 2022 </a>
+            </div>
+         </div>
+      </div>
+      <div class="box" data-aos="fade-up" data-aos-delay="450">
+         <div class="images" style="display: flex;">
+            <img src="Zurag/blog-3.jpg" alt="">
+         </div>
+         <div class="content">
+            <h3>Шинэ жилийн жигнэмэг хийх арга</h3>
+            <p>Баярын өмнөхөн шинэ жилийн жигнэмэгийг өөрийн гараар бүтээхийн тулд та тэвчээр, уран сэтгэмж, гэр бүлээ бүх төрлийн буржгар урлагийн бүтээлээр бэлэглэх хүсэл эрмэлзэлтэй байх хэрэгтэй.</p>
+            <a href="https://www.chansysdesk.com/2016/12/20/%D0%B7%D1%83%D0%BB-%D1%81%D0%B0%D1%80%D1%8B%D0%BD-%D0%B6%D0%B8%D0%B3%D0%BD%D1%8D%D0%BC%D1%8D%D0%B3/" class="btn">Үргэлжлүүлэх</a>
+            <div class="icons">
+               <a href="#"> <i class="fas fa-calendar"></i> 15th Dec, 2022 </a>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="footer">
+   <div class="box-container">
+      <div class="box" data-aos="fade-up" data-aos-delay="150">
+         <h3>quick links</h3>
+         <a class="link" href="#home"> <i class="fas fa-angle-right"></i> Home</a>
+         <a class="link" href="#about"> <i class="fas fa-angle-right"></i> About</a>
+         <a class="link" href="#products"> <i class="fas fa-angle-right"></i> Products</a>
+         <a class="link" href="#services"> <i class="fas fa-angle-right"></i> Facts</a>
+         <a class="link" href="#gallery"> <i class="fas fa-angle-right"></i> Gallery</a>
+         <a class="link" href="#contact"> <i class="fas fa-angle-right"></i> Contact</a>
+         <a class="link" href="#blogs"> <i class="fas fa-angle-right"></i> Blogs</a>
+      </div>
+      <div class="box" data-aos="fade-up" data-aos-delay="300">
+         <h3>extra links</h3>
+         <a class="link" href="#"> <i class="fas fa-angle-right"></i> My order </a>
+         <a class="link" href="#"> <i class="fas fa-angle-right"></i> My wishlist </a>
+         <a class="link" href="#"> <i class="fas fa-angle-right"></i> My favorite </a>
+         <a class="link" href="#"> <i class="fas fa-angle-right"></i> Terms Of Services </a>
+         <a class="link" href="#"> <i class="fas fa-angle-right"></i> Privacy policy </a>
+      </div>
+      <div class="box" data-aos="fade-up" data-aos-delay="450">
+         <h3>contact info</h3>
+         <a class="link" href="#"> <i class="fas fa-phone"></i> +976-89820806</a>
+         <a class="link" href="#"> <i class="fas fa-envelope"></i> batsukhgerelsaikhan0@gmail.com </a>
+         <a class="link" href="https://www.google.com/maps/place/Mandakh+University,+School+Of+Information+Technology/@47.9272682,106.88918,18.11z/data=!4m5!3m4!1s0x5d96ecda9b63390f:0xc09f32fd3ef3797d!8m2!3d47.9275344!4d106.88895"> <i class="fas fa-map"></i> WWHG+2RP, Улаанбаатар </a>
+      </div>
+      <div class="box" data-aos="fade-up" data-aos-delay="600">
+         <h3>newsletter</h3>
+         <form action="">
+            <input type="email" name="" placeholder="Enter your email" class="email" id="">
+            <input type="submit" value="subscribe" class="btn">
+         </form>
+         <div class="share">
+            <a href="https://www.facebook.com/profile.php?id=100034681306828" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="https://www.instagram.com/grlsaikhn/" class="fab fa-instagram"></a>
+         </div>
+      </div>
+   </div>
+   <p class="credit"> created by <span>Gerelsaikhan.B</span> | all rights reserved! </p>
+</section>
+
+<div class="cart-overlay" id="cart-overlay">
+   <div class="shopping-cart">
+      <i class="fas fa-times close-cart-btn" id="close-cart-btn"></i>
+      <h2>🛒 Таны сагс</h2>
+      <div class="cart-items-container" id="cart-items-container">
+         <p class="empty-cart-message">Таны сагс хоосон байна.</p>
+      </div>
+      <div class="cart-total">
+         Нийт: <span id="cart-total-price">0₮</span>
+      </div>
+      <a href="#" class="btn btn-checkout">Худалдан авалт хийх</a>
+   </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="script.js"></script>
+
+<script>
+   AOS.init({
+      duration:800,
+   });
+</script>
+   
+</body>
+</html>
