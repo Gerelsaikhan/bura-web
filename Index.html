@@ -9,9 +9,26 @@
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-   <link rel="stylesheet" href="Css/style2.css">
-
-   <style>
+   <link rel="stylesheet" href="Css/style2.css"> <style>
+      /* --- CUSTOM STYLES ADDED FOR USER LOGIN/LOGOUT --- */
+      .icons .login-link {
+          font-size: 2rem; 
+          padding: 0 1rem; 
+          color: #c0392b; 
+          position: relative;
+      }
+      .icons .login-link:hover {
+          color: #27ae60;
+      }
+      .icons #username-display {
+          font-size: 1.6rem;
+          font-weight: 600;
+          padding-left: 5px;
+          white-space: nowrap;
+          display: none; /* Hidden by default, shown by JS if logged in */
+          text-transform: capitalize;
+      }
+      
       /* Cart Count Bubble */
       .cart-count {
          position: absolute;
@@ -26,7 +43,7 @@
          text-align: center;
          min-width: 20px;
          height: 20px;
-         display: none; /* Hidden by default when cart is empty */
+         display: none;
       }
 
       .icons .fas.fa-shopping-cart {
@@ -41,7 +58,7 @@
          width: 100%;
          height: 100%;
          background: rgba(0, 0, 0, 0.7);
-         display: none; /* Hidden by default */
+         display: none;
          justify-content: center;
          align-items: center;
          z-index: 1000; 
@@ -62,7 +79,7 @@
       .shopping-cart h2 {
          text-align: center;
          margin-bottom: 20px;
-         color: #c0392b; /* Christmas Red */
+         color: #c0392b;
       }
       
       /* Individual Cart Item */
@@ -156,9 +173,14 @@
    <div class="icons">
       <div id="menu-btn" class="fas fa-bars"></div>
       <div id="search-btn" class="fas fa-search"></div>
+
       <a href="#" class="fas fa-heart"></a>
       <a href="#" class="fas fa-shopping-cart" id="cart-icon">
          <span class="cart-count" id="cart-item-count">0</span>
+      </a>
+      <a href="signin.html" class="login-link" id="user-auth-link">
+          <i class="fas fa-user"></i> 
+          <span id="username-display"></span>
       </a>
    </div>
 
@@ -373,7 +395,7 @@
       <div class="box" class="box" data-aos="fade-up" data-aos-delay="600">
          <i class="fas fa-gifts"></i>
          <h3>Шинэ жилийн бэлэг</h3>
-         <p>Шашны зан үйлэнд хүмүүс бэлэг дурсгалын бяцхан зүйлс солилцдог аж. Харин 1800 оны үеэс гацуур мод чимэглэж, баярын зурагтай ил захидал илгээж, бэлэг солилцох болсон байна.</p>
+         <p>Шашны зан үйлд хүмүүс бэлэг дурсгалын бяцхан зүйлс солилцдог аж. Харин 1800 оны үеэс гацуур мод чимэглэж, баярын зурагтай ил захидал илгээж, бэлэг солилцох болсон байна.</p>
       </div>
       <div class="box" class="box" data-aos="fade-up" data-aos-delay="750">
          <i class="fas fa-candy-cane"></i>
@@ -529,10 +551,12 @@
       <a href="#" class="btn btn-checkout">Худалдан авалт хийх</a>
    </div>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="script.js"></script>
 
 <script>
+   // Re-initialization of AOS
    AOS.init({
       duration:800,
    });
